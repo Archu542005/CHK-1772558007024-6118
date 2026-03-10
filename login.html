@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login - Smart Grievance Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-city"></i>
+                <span>Smart Grievance Portal</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="register.html" class="nav-link">Register</a></li>
+                <li><a href="login.html" class="nav-link active">Login</a></li>
+                <li><a href="submit_complaint.html" class="nav-link">Submit Complaint</a></li>
+                <li><a href="track_complaint.html" class="nav-link">Track Complaint</a></li>
+                <li><a href="admin_login.html" class="nav-link">Admin Login</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Section -->
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-form">
+                    <h2><i class="fas fa-sign-in-alt"></i> User Login</h2>
+                    <p>Login to access your dashboard and manage complaints</p>
+                    
+                    <form id="loginForm" action="login.php" method="POST">
+                        <div class="form-group">
+                            <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password"><i class="fas fa-lock"></i> Password</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        
+                        <div class="form-options">
+                            <label class="checkbox">
+                                <input type="checkbox" name="remember">
+                                <span class="checkmark"></span>
+                                Remember me
+                            </label>
+                            <a href="#" class="forgot-password">Forgot Password?</a>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </button>
+                    </form>
+                    
+                    <div class="auth-links">
+                        <p>Don't have an account? <a href="register.html">Register here</a></p>
+                        <p><a href="index.html">Back to Home</a></p>
+                    </div>
+                </div>
+                
+                <div class="auth-info">
+                    <h3>Welcome Back!</h3>
+                    <p>Login to access:</p>
+                    <ul>
+                        <li><i class="fas fa-dashboard"></i> Your Dashboard</li>
+                        <li><i class="fas fa-edit"></i> Submit New Complaints</li>
+                        <li><i class="fas fa-search"></i> Track Complaint Status</li>
+                        <li><i class="fas fa-history"></i> View Complaint History</li>
+                        <li><i class="fas fa-bell"></i> Get Notifications</li>
+                    </ul>
+                    
+                    <div class="info-card">
+                        <h4><i class="fas fa-question-circle"></i> Need Help?</h4>
+                        <p>Contact our support team at support@grievance.gov.in</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Smart Grievance Portal</h3>
+                    <p>Making governance accessible and transparent for every citizen.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="register.html">Register</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="submit_complaint.html">Submit Complaint</a></li>
+                        <li><a href="track_complaint.html">Track Complaint</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-phone"></i> Helpline: 1800-123-4567</p>
+                    <p><i class="fas fa-envelope"></i> support@grievance.gov.in</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Smart Grievance Management System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration - Smart Grievance Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-city"></i>
+                <span>Smart Grievance Portal</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="register.html" class="nav-link active">Register</a></li>
+                <li><a href="login.html" class="nav-link">Login</a></li>
+                <li><a href="submit_complaint.html" class="nav-link">Submit Complaint</a></li>
+                <li><a href="track_complaint.html" class="nav-link">Track Complaint</a></li>
+                <li><a href="admin_login.html" class="nav-link">Admin Login</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Registration Section -->
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-form">
+                    <h2><i class="fas fa-user-plus"></i> User Registration</h2>
+                    <p>Create your account to submit and track complaints</p>
+                    
+                    <form id="registrationForm" action="register.php" method="POST">
+                        <div class="form-group">
+                            <label for="name"><i class="fas fa-user"></i> Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="mobile"><i class="fas fa-phone"></i> Mobile Number</label>
+                            <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="address"><i class="fas fa-home"></i> Address</label>
+                            <textarea id="address" name="address" rows="3" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password"><i class="fas fa-lock"></i> Password</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirm_password"><i class="fas fa-lock"></i> Confirm Password</label>
+                            <input type="password" id="confirm_password" name="confirm_password" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-user-plus"></i> Register
+                        </button>
+                    </form>
+                    
+                    <div class="auth-links">
+                        <p>Already have an account? <a href="login.html">Login here</a></p>
+                        <p><a href="index.html">Back to Home</a></p>
+                    </div>
+                </div>
+                
+                <div class="auth-info">
+                    <h3>Why Register?</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Submit complaints quickly</li>
+                        <li><i class="fas fa-check-circle"></i> Track complaint status</li>
+                        <li><i class="fas fa-check-circle"></i> Get notifications</li>
+                        <li><i class="fas fa-check-circle"></i> View complaint history</li>
+                        <li><i class="fas fa-check-circle"></i> Priority support</li>
+                    </ul>
+                    
+                    <div class="info-card">
+                        <h4><i class="fas fa-shield-alt"></i> Your Data is Safe</h4>
+                        <p>We use industry-standard encryption to protect your personal information.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Smart Grievance Portal</h3>
+                    <p>Making governance accessible and transparent for every citizen.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="register.html">Register</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="submit_complaint.html">Submit Complaint</a></li>
+                        <li><a href="track_complaint.html">Track Complaint</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-phone"></i> Helpline: 1800-123-4567</p>
+                    <p><i class="fas fa-envelope"></i> support@grievance.gov.in</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Smart Grievance Management System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Password confirmation validation
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm_password').value;
+            
+            if (password !== confirmPassword) {
+                e.preventDefault();
+                alert('Passwords do not match!');
+                return false;
+            }
+        });
+    </script>
+</body>
+</html>

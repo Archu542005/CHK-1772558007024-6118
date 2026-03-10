@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Grievance Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-city"></i>
+                <span>Smart Grievance Portal</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="register.html" class="nav-link">Register</a></li>
+                <li><a href="login.html" class="nav-link" id="loginLink">Login</a></li>
+                <li><a href="submit_complaint.html" class="nav-link">Submit Complaint</a></li>
+                <li><a href="track_complaint.html" class="nav-link">Track Complaint</a></li>
+                <li><a href="admin_login.html" class="nav-link">Admin Login</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Image Slider -->
+    <section id="home" class="hero">
+        <div class="slider-container">
+            <div class="slider">
+                <div class="slide active">
+                    <img src="img/4.png" alt="Clean City">
+                    <div class="slide-content">
+                        <h1>स्वच्छ शहर आपली जबाबदारी</h1>
+                        <p>Building a cleaner, better tomorrow together</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="img/2.png" alt="Water Conservation">
+                    <div class="slide-content">
+                        <h1>पाणी वाचवा, भविष्य वाचवा</h1>
+                        <p>Every drop counts towards a sustainable future</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="img/3.png" alt="Garbage Management">
+                    <div class="slide-content">
+                        <h1>कचरा योग्य ठिकाणी टाका</h1>
+                        <p>Proper waste management for healthy living</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="img/1.png" alt="Smart City">
+                    <div class="slide-content">
+                        <h1>Smart City Solutions</h1>
+                        <p>Technology-driven governance for citizens</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="prev-slide"><i class="fas fa-chevron-left"></i></button>
+                <button class="next-slide"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" style="position: relative;">
+        <div class="about-background" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('uploads/your-image-name.jpg'); background-size: cover; background-position: center; opacity: 0.2; z-index: 0;"></div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <h2>Welcome to Smart Grievance Management System</h2>
+            <p>Your one-stop solution for submitting and tracking civic complaints. We ensure your voice is heard and issues are resolved promptly.</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="service-cards">
+                <div class="service-card">
+                    <div class="card-icon">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <h3>Submit Complaint</h3>
+                    <p>File your grievances easily with our simple complaint submission system</p>
+                    <a href="submit_complaint.html" class="btn">Submit Now</a>
+                </div>
+                <div class="service-card">
+                    <div class="card-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Track Complaint</h3>
+                    <p>Monitor the status of your complaints with unique complaint IDs</p>
+                    <a href="track_complaint.html" class="btn">Track Now</a>
+                </div>
+                <div class="service-card">
+                    <div class="card-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Admin Monitoring</h3>
+                    <p>Efficient complaint management by department administrators</p>
+                    <a href="admin_login.html" class="btn">Admin Portal</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2>Why Choose Our System?</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Fast Response</h3>
+                    <p>Quick complaint processing and resolution</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-lock"></i>
+                    <h3>Secure</h3>
+                    <p>Your data is protected with advanced security</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile Friendly</h3>
+                    <p>Access our services from any device</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Transparent</h3>
+                    <p>Track your complaint status in real-time</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3 class="stat-number" data-target="5000">0</h3>
+                    <p>Complaints Resolved</p>
+                </div>
+                <div class="stat-item">
+                    <h3 class="stat-number" data-target="98">0</h3>
+                    <p>Satisfaction Rate %</p>
+                </div>
+                <div class="stat-item">
+                    <h3 class="stat-number" data-target="24">0</h3>
+                    <p>Avg. Resolution Hours</p>
+                </div>
+                <div class="stat-item">
+                    <h3 class="stat-number" data-target="15000">0</h3>
+                    <p>Happy Citizens</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Smart Grievance Portal</h3>
+                    <p>Making governance accessible and transparent for every citizen.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="register.html">Register</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="submit_complaint.html">Submit Complaint</a></li>
+                        <li><a href="track_complaint.html">Track Complaint</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-phone"></i> Helpline: 1800-123-4567</p>
+                    <p><i class="fas fa-envelope"></i> support@grievance.gov.in</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Smart Grievance Management System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI Chatbot -->
+    <div class="chatbot-container">
+        <div class="chatbot-toggle">
+            <i class="fas fa-comments"></i>
+        </div>
+        <div class="chatbot-window">
+            <div class="chatbot-header">
+                <h3>AI Assistant</h3>
+                <div class="language-selector">
+                    <select id="chatLanguage">
+                        <option value="en">English</option>
+                        <option value="hi">हिंदी</option>
+                        <option value="mr">मराठी</option>
+                    </select>
+                </div>
+            </div>
+            <div class="chatbot-messages">
+                <div class="message bot">
+                    <p>Hello! How can I help you today?</p>
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatInput" placeholder="Type your message...">
+                <button id="voiceButton" class="voice-button" title="Click to speak (Voice Input)">
+                    <i class="fas fa-microphone"></i>
+                </button>
+                <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Check login status and update navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            checkLoginStatus();
+        });
+        
+        function checkLoginStatus() {
+            // Check if user is logged in (via session check)
+            fetch('check_login_status.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.logged_in) {
+                        updateNavigationForLoggedInUser(data.user_name);
+                    }
+                })
+                .catch(error => {
+                    console.log('Login status check failed');
+                });
+        }
+        
+        function updateNavigationForLoggedInUser(userName) {
+            const navMenu = document.getElementById('navMenu');
+            
+            // Create new navigation for logged-in users
+            const loggedInNav = `
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="user_dashboard.php" class="nav-link">Dashboard</a></li>
+                <li><a href="submit_complaint.html" class="nav-link">Submit Complaint</a></li>
+                <li><a href="track_complaint.html" class="nav-link">Track Complaint</a></li>
+                <li><a href="profile.php" class="nav-link">My Account</a></li>
+                <li><a href="logout.php" class="nav-link">Logout</a></li>
+            `;
+            
+            navMenu.innerHTML = loggedInNav;
+            
+            // Add user welcome message
+            const navContainer = document.querySelector('.nav-container');
+            const welcomeDiv = document.createElement('div');
+            welcomeDiv.className = 'user-welcome';
+            welcomeDiv.innerHTML = `
+                <span><i class="fas fa-user-circle"></i> Welcome, ${userName}</span>
+            `;
+            navContainer.appendChild(welcomeDiv);
+        }
+    </script>
+</body>
+</html>

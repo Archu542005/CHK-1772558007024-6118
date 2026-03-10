@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Complaint - Smart Grievance Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-city"></i>
+                <span>Smart Grievance Portal</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="register.html" class="nav-link">Register</a></li>
+                <li><a href="login.html" class="nav-link">Login</a></li>
+                <li><a href="submit_complaint.html" class="nav-link active">Submit Complaint</a></li>
+                <li><a href="track_complaint.html" class="nav-link">Track Complaint</a></li>
+                <li><a href="admin_login.html" class="nav-link">Admin Login</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Submit Complaint Section -->
+    <section class="complaint-section">
+        <div class="container">
+            <div class="complaint-container">
+                <div class="complaint-form">
+                    <h2><i class="fas fa-edit"></i> Submit Complaint</h2>
+                    <p>File your grievance and we'll ensure it reaches the right department</p>
+                    
+                    <form id="complaintForm" action="submit.php" method="POST" enctype="multipart/form-data">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name"><i class="fas fa-user"></i> Full Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="category"><i class="fas fa-list"></i> Department Category</label>
+                            <select id="category" name="category" required>
+                                <option value="">Select Department</option>
+                                <option value="garbage">Garbage / Kachra</option>
+                                <option value="water">Water Leakage</option>
+                                <option value="road">Road Damage</option>
+                                <option value="electricity">Electricity</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="description"><i class="fas fa-file-alt"></i> Complaint Description</label>
+                            <textarea id="description" name="description" rows="5" required 
+                                placeholder="Please provide detailed information about your complaint..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="location"><i class="fas fa-map-marker-alt"></i> Complaint Location</label>
+                            <input type="text" id="location" name="location" required 
+                                placeholder="Enter the exact location/address">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="image"><i class="fas fa-camera"></i> Upload Image (Optional)</label>
+                            <input type="file" id="image" name="image" accept="image/*">
+                            <small>Supported formats: JPG, PNG, GIF (Max size: 5MB)</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="priority"><i class="fas fa-exclamation-triangle"></i> Priority Level</label>
+                            <select id="priority" name="priority" required>
+                                <option value="normal">Normal</option>
+                                <option value="high">High</option>
+                                <option value="urgent">Urgent</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Submit Complaint
+                        </button>
+                    </form>
+                    
+                    <div class="form-links">
+                        <p><a href="track_complaint.html">Track Existing Complaint</a></p>
+                        <p><a href="index.html">Back to Home</a></p>
+                    </div>
+                </div>
+                
+                <div class="complaint-info">
+                    <h3>Complaint Guidelines</h3>
+                    <div class="guidelines">
+                        <div class="guideline-item">
+                            <i class="fas fa-info-circle"></i>
+                            <div>
+                                <h4>Be Specific</h4>
+                                <p>Provide detailed information about your complaint</p>
+                            </div>
+                        </div>
+                        <div class="guideline-item">
+                            <i class="fas fa-map-pin"></i>
+                            <div>
+                                <h4>Exact Location</h4>
+                                <p>Mention the precise location for quick action</p>
+                            </div>
+                        </div>
+                        <div class="guideline-item">
+                            <i class="fas fa-image"></i>
+                            <div>
+                                <h4>Add Evidence</h4>
+                                <p>Upload photos to support your complaint</p>
+                            </div>
+                        </div>
+                        <div class="guideline-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Quick Response</h4>
+                                <p>You'll receive a complaint ID for tracking</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h4><i class="fas fa-phone-alt"></i> Emergency Helpline</h4>
+                        <p>For urgent issues: 1800-123-4567</p>
+                        <p>Available 24/7 for emergency complaints</p>
+                    </div>
+                    
+                    <div class="departments-list">
+                        <h4>Available Departments</h4>
+                        <ul>
+                            <li><i class="fas fa-trash"></i> Garbage Management</li>
+                            <li><i class="fas fa-tint"></i> Water Supply</li>
+                            <li><i class="fas fa-road"></i> Road Maintenance</li>
+                            <li><i class="fas fa-bolt"></i> Electricity</li>
+                            <li><i class="fas fa-cogs"></i> Other Services</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-check-circle"></i> Complaint Submitted Successfully!</h3>
+            </div>
+            <div class="modal-body">
+                <p>Your complaint has been successfully submitted.</p>
+                <div class="complaint-id">
+                    <strong>Your Complaint ID:</strong> <span id="complaintId"></span>
+                </div>
+                <p>Please save this ID for future reference.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="trackComplaint()">Track Complaint</button>
+                <button class="btn btn-secondary" onclick="closeModal()">Submit Another</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Smart Grievance Portal</h3>
+                    <p>Making governance accessible and transparent for every citizen.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="register.html">Register</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="submit_complaint.html">Submit Complaint</a></li>
+                        <li><a href="track_complaint.html">Track Complaint</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-phone"></i> Helpline: 1800-123-4567</p>
+                    <p><i class="fas fa-envelope"></i> support@grievance.gov.in</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Smart Grievance Management System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Auto-fill user data if logged in
+        window.onload = function() {
+            // Check if user is logged in and auto-fill form
+            const userData = localStorage.getItem('userData');
+            if (userData) {
+                const user = JSON.parse(userData);
+                document.getElementById('name').value = user.name || '';
+                document.getElementById('email').value = user.email || '';
+            }
+        };
+        
+        function trackComplaint() {
+            const complaintId = document.getElementById('complaintId').textContent;
+            window.location.href = `track_complaint.html?id=${complaintId}`;
+        }
+        
+        function closeModal() {
+            document.getElementById('successModal').style.display = 'none';
+            document.getElementById('complaintForm').reset();
+        }
+    </script>
+</body>
+</html>

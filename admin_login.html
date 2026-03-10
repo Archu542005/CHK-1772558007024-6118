@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Smart Grievance Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-city"></i>
+                <span>Smart Grievance Portal</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="register.html" class="nav-link">Register</a></li>
+                <li><a href="login.html" class="nav-link">User Login</a></li>
+                <li><a href="submit_complaint.html" class="nav-link">Submit Complaint</a></li>
+                <li><a href="track_complaint.html" class="nav-link">Track Complaint</a></li>
+                <li><a href="admin_login.html" class="nav-link active">Admin Login</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Admin Login Section -->
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-form">
+                    <h2><i class="fas fa-user-shield"></i> Department Admin Login</h2>
+                    <p>Access your department dashboard to manage complaints</p>
+                    
+                    <form id="adminLoginForm" action="admin_login.php" method="POST">
+                        <div class="form-group">
+                            <label for="department"><i class="fas fa-building"></i> Select Department</label>
+                            <select id="department" name="department" required>
+                                <option value="">Select Your Department</option>
+                                <option value="garbage">Garbage Department</option>
+                                <option value="water">Water Department</option>
+                                <option value="road">Road Department</option>
+                                <option value="electricity">Electricity Department</option>
+                                <option value="higher">Higher Authority</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="username"><i class="fas fa-user"></i> Username</label>
+                            <input type="text" id="username" name="username" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password"><i class="fas fa-lock"></i> Password</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        
+                        <div class="form-options">
+                            <label class="checkbox">
+                                <input type="checkbox" name="remember">
+                                <span class="checkmark"></span>
+                                Remember me
+                            </label>
+                            <a href="#" class="forgot-password">Forgot Password?</a>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-sign-in-alt"></i> Login to Dashboard
+                        </button>
+                    </form>
+                    
+                    <div class="auth-links">
+                        <p>Looking for user login? <a href="login.html">Click here</a></p>
+                        <p><a href="index.html">Back to Home</a></p>
+                    </div>
+                </div>
+                
+                <div class="auth-info">
+                    <h3>Department Dashboard Access</h3>
+                    <p>As a department administrator, you can:</p>
+                    <ul>
+                        <li><i class="fas fa-clipboard-list"></i> View all complaints</li>
+                        <li><i class="fas fa-edit"></i> Update complaint status</li>
+                        <li><i class="fas fa-chart-bar"></i> Generate reports</li>
+                        <li><i class="fas fa-bell"></i> Manage notifications</li>
+                        <li><i class="fas fa-users"></i> Coordinate with other departments</li>
+                    </ul>
+                    
+                    <div class="department-cards">
+                        <h4>Available Departments</h4>
+                        <div class="dept-card">
+                            <i class="fas fa-trash"></i>
+                            <h5>Garbage Department</h5>
+                            <p>Manages waste collection and sanitation</p>
+                        </div>
+                        <div class="dept-card">
+                            <i class="fas fa-tint"></i>
+                            <h5>Water Department</h5>
+                            <p>Handles water supply and leakage issues</p>
+                        </div>
+                        <div class="dept-card">
+                            <i class="fas fa-road"></i>
+                            <h5>Road Department</h5>
+                            <p>Maintains road infrastructure</p>
+                        </div>
+                        <div class="dept-card">
+                            <i class="fas fa-bolt"></i>
+                            <h5>Electricity Department</h5>
+                            <p>Manages power supply and connections</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h4><i class="fas fa-shield-alt"></i> Secure Access</h4>
+                        <p>Only authorized department personnel can access the admin dashboard.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Smart Grievance Portal</h3>
+                    <p>Making governance accessible and transparent for every citizen.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="register.html">Register</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="submit_complaint.html">Submit Complaint</a></li>
+                        <li><a href="track_complaint.html">Track Complaint</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-phone"></i> Helpline: 1800-123-4567</p>
+                    <p><i class="fas fa-envelope"></i> support@grievance.gov.in</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Smart Grievance Management System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Demo credentials for testing
+        const demoCredentials = {
+            garbage: { username: 'garbage_admin', password: 'admin123' },
+            water: { username: 'water_admin', password: 'admin123' },
+            road: { username: 'road_admin', password: 'admin123' },
+            electricity: { username: 'electricity_admin', password: 'admin123' },
+            higher: { username: 'higher_admin', password: 'admin123' }
+        };
+        
+        // Auto-fill demo credentials when department is selected
+        document.getElementById('department').addEventListener('change', function() {
+            const dept = this.value;
+            if (demoCredentials[dept]) {
+                document.getElementById('username').value = demoCredentials[dept].username;
+                document.getElementById('password').value = demoCredentials[dept].password;
+            }
+        });
+    </script>
+</body>
+</html>

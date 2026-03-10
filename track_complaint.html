@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Complaint - Smart Grievance Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-city"></i>
+                <span>Smart Grievance Portal</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="register.html" class="nav-link">Register</a></li>
+                <li><a href="login.html" class="nav-link">Login</a></li>
+                <li><a href="submit_complaint.html" class="nav-link">Submit Complaint</a></li>
+                <li><a href="track_complaint.html" class="nav-link active">Track Complaint</a></li>
+                <li><a href="admin_login.html" class="nav-link">Admin Login</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Track Complaint Section -->
+    <section class="track-section">
+        <div class="container">
+            <div class="track-container">
+                <div class="track-form">
+                    <h2><i class="fas fa-search"></i> Track Your Complaint</h2>
+                    <p>Enter your complaint ID to check the current status</p>
+                    
+                    <form id="trackForm" action="track.php" method="GET">
+                        <div class="form-group">
+                            <label for="complaintId"><i class="fas fa-hashtag"></i> Complaint ID</label>
+                            <input type="text" id="complaintId" name="complaintId" required 
+                                placeholder="Enter your complaint ID (e.g., CMP2024001)">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-search"></i> Track Complaint
+                        </button>
+                    </form>
+                    
+                    <div class="track-links">
+                        <p><a href="submit_complaint.html">Submit New Complaint</a></p>
+                        <p><a href="index.html">Back to Home</a></p>
+                    </div>
+                </div>
+                
+                <div class="track-info">
+                    <h3>How to Track?</h3>
+                    <div class="tracking-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Get Your Complaint ID</h4>
+                                <p>You receive a unique ID when you submit a complaint</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Enter the ID</h4>
+                                <p>Type your complaint ID in the search box above</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>View Status</h4>
+                                <p>Check real-time status and updates</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="status-guide">
+                        <h4>Status Meanings</h4>
+                        <div class="status-item">
+                            <span class="status-badge pending">Pending</span>
+                            <p>Complaint received and under review</p>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-badge in-progress">In Progress</span>
+                            <p>Department is working on your complaint</p>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-badge resolved">Resolved</span>
+                            <p>Complaint has been successfully resolved</p>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-badge escalated">Escalated</span>
+                            <p>Complaint escalated to higher authority</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Complaint Result Section (Hidden by default) -->
+    <section id="complaintResult" class="complaint-result" style="display: none;">
+        <div class="container">
+            <div class="result-container">
+                <h3><i class="fas fa-clipboard-list"></i> Complaint Details</h3>
+                <div class="complaint-details">
+                    <div class="detail-row">
+                        <span class="label">Complaint ID:</span>
+                        <span class="value" id="resultComplaintId"></span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Category:</span>
+                        <span class="value" id="resultCategory"></span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Description:</span>
+                        <span class="value" id="resultDescription"></span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Location:</span>
+                        <span class="value" id="resultLocation"></span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Current Status:</span>
+                        <span class="status-badge" id="resultStatus"></span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Date Submitted:</span>
+                        <span class="value" id="resultDate"></span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Last Updated:</span>
+                        <span class="value" id="resultLastUpdated"></span>
+                    </div>
+                </div>
+                
+                <div class="timeline-section">
+                    <h4>Complaint Timeline</h4>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot submitted"></div>
+                            <div class="timeline-content">
+                                <h5>Complaint Submitted</h5>
+                                <p id="timelineSubmitted"></p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" id="timelineInProgress" style="display: none;">
+                            <div class="timeline-dot in-progress"></div>
+                            <div class="timeline-content">
+                                <h5>Under Review</h5>
+                                <p id="timelineInProgressDate"></p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" id="timelineResolved" style="display: none;">
+                            <div class="timeline-dot resolved"></div>
+                            <div class="timeline-content">
+                                <h5>Resolved</h5>
+                                <p id="timelineResolvedDate"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="result-actions">
+                    <button class="btn btn-primary" onclick="printDetails()">
+                        <i class="fas fa-print"></i> Print Details
+                    </button>
+                    <button class="btn btn-secondary" onclick="trackAnother()">
+                        <i class="fas fa-search"></i> Track Another
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Smart Grievance Portal</h3>
+                    <p>Making governance accessible and transparent for every citizen.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="register.html">Register</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="submit_complaint.html">Submit Complaint</a></li>
+                        <li><a href="track_complaint.html">Track Complaint</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-phone"></i> Helpline: 1800-123-4567</p>
+                    <p><i class="fas fa-envelope"></i> support@grievance.gov.in</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Smart Grievance Management System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Auto-fill complaint ID from URL parameter
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const complaintId = urlParams.get('id');
+            if (complaintId) {
+                document.getElementById('complaintId').value = complaintId;
+                document.getElementById('trackForm').submit();
+            }
+        };
+        
+        function printDetails() {
+            window.print();
+        }
+        
+        function trackAnother() {
+            document.getElementById('complaintResult').style.display = 'none';
+            document.getElementById('trackForm').reset();
+            document.getElementById('complaintId').focus();
+        }
+    </script>
+</body>
+</html>
