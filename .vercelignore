@@ -1,0 +1,11 @@
+node_modules
+.git
+.env
+.env.local
+.DS_Store
+.gitignore
+uploads/*
+debug*.php
+test*.php
+*.sql
+README.md
