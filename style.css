@@ -1328,6 +1328,185 @@ body {
     }
 }
 
+/* Complaint Map Section Styles */
+.complaint-map-section {
+    padding: 60px 0;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    position: relative;
+}
+
+.complaint-map-section .map-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 0 20px;
+}
+
+.complaint-map-section .map-header h2 {
+    color: #2c3e50;
+    font-size: 2.2rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.complaint-map-section .map-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.map-btn {
+    background: white;
+    border: 2px solid #3498db;
+    color: #3498db;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.map-btn:hover {
+    background: #3498db;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+}
+
+.map-container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    overflow: hidden;
+    margin: 0 20px;
+    height: 500px;
+    position: relative;
+}
+
+.map-loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: #3498db;
+    font-size: 1.2rem;
+}
+
+.map-loading i {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Custom Popup Styles */
+.custom-popup {
+    min-width: 280px;
+    max-width: 350px;
+}
+
+.popup-header {
+    background: #3498db;
+    color: white;
+    padding: 12px 15px;
+    margin: -15px -15px 15px -15px;
+    border-radius: 10px 10px 0 0;
+    font-weight: bold;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popup-body {
+    padding: 15px;
+}
+
+.popup-row {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: flex-start;
+}
+
+.popup-label {
+    font-weight: 600;
+    color: #2c3e50;
+    min-width: 100px;
+    font-size: 13px;
+}
+
+.popup-value {
+    color: #555;
+    font-size: 13px;
+    flex: 1;
+    word-break: break-word;
+}
+
+.popup-status {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    margin-top: 10px;
+}
+
+.status-pending { background: #f39c12; }
+.status-in_progress { background: #3498db; }
+.status-resolved { background: #27ae60; }
+.status-escalated { background: #e74c3c; }
+
+/* Custom Marker Styles */
+.custom-marker {
+    background: transparent !important;
+    border: none !important;
+}
+
+.leaflet-popup-content-wrapper {
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.leaflet-popup-content {
+    margin: 0;
+    border-radius: 10px;
+}
+
+/* Responsive Map Styles */
+@media (max-width: 768px) {
+    .complaint-map-section .map-header {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .complaint-map-section .map-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .map-controls {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .map-container {
+        height: 400px;
+        margin: 0 10px;
+    }
+}
+
 /* Print Styles */
 @media print {
     .navbar,

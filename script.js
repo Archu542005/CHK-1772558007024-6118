@@ -632,3 +632,271 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.head.appendChild(style);
 });
+
+// Complaint Map Functionality
+let complaintMap = null;
+let mapMarkers = [];
+let mapVisible = false;
+
+// Open/Close Complaint Map
+function openComplaintMap() {
+    const mapSection = document.getElementById('complaintMapSection');
+    
+    if (mapSection) {
+        if (mapVisible) {
+            mapSection.style.display = 'none';
+            mapVisible = false;
+        } else {
+            mapSection.style.display = 'block';
+            mapVisible = true;
+            
+            // Initialize map if not already done
+            if (!complaintMap) {
+                initializeComplaintMap();
+            }
+            
+            // Scroll to map section
+            mapSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+}
+
+// Toggle Map View
+function toggleMapView() {
+    const mapSection = document.getElementById('complaintMapSection');
+    if (mapSection) {
+        if (mapSection.style.display === 'none') {
+            mapSection.style.display = 'block';
+            if (!complaintMap) {
+                initializeComplaintMap();
+            }
+        } else {
+            mapSection.style.display = 'none';
+        }
+    }
+}
+
+// Reset Map View
+function resetMapView() {
+    if (complaintMap && mapMarkers.length > 0) {
+        const group = L.featureGroup(mapMarkers);
+        complaintMap.fitBounds(group.getBounds().pad(0.1));
+    }
+}
+
+// Refresh Map Data
+function refreshMapData() {
+    if (complaintMap) {
+        loadComplaintData();
+    }
+}
+
+// Initialize Complaint Map
+function initializeComplaintMap() {
+    // Check if Leaflet is loaded
+    if (typeof L === 'undefined') {
+        // Load Leaflet dynamically
+        const leafletCss = document.createElement('link');
+        leafletCss.rel = 'stylesheet';
+        leafletCss.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+        document.head.appendChild(leafletCss);
+        
+        const leafletJs = document.createElement('script');
+        leafletJs.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+        leafletJs.onload = function() {
+            createMap();
+        };
+        document.head.appendChild(leafletJs);
+    } else {
+        createMap();
+    }
+}
+
+// Create Map
+function createMap() {
+    const mapContainer = document.getElementById('complaintMap');
+    
+    if (!mapContainer) return;
+    
+    // Clear loading
+    mapContainer.innerHTML = '';
+    
+    // Create map
+    complaintMap = L.map('complaintMap').setView([20.5937, 78.9629], 5);
+    
+    // Add tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors',
+        maxZoom: 18
+    }).addTo(complaintMap);
+    
+    // Load complaint data
+    loadComplaintData();
+}
+
+// Load Complaint Data
+async function loadComplaintData() {
+    try {
+        const response = await fetch('admin_map_api.php?action=all');
+        const data = await response.json();
+        
+        if (data.success) {
+            displayComplaintMarkers(data.data.complaints);
+        } else {
+            console.error('API Error:', data.error);
+            showMapError('Failed to load complaint data');
+        }
+    } catch (error) {
+        console.error('Error loading data:', error);
+        showMapError('Network error. Please try again.');
+    }
+}
+
+// Display Complaint Markers
+function displayComplaintMarkers(complaints) {
+    // Clear existing markers
+    mapMarkers.forEach(marker => complaintMap.removeLayer(marker));
+    mapMarkers = [];
+    
+    complaints.forEach(complaint => {
+        // Validate coordinates
+        if (!complaint.lat || !complaint.lng) return;
+        
+        const marker = createComplaintMarker(complaint);
+        const popup = createComplaintPopup(complaint);
+        
+        marker.bindPopup(popup, {
+            maxWidth: 350,
+            className: 'custom-popup'
+        });
+        
+        complaintMap.addLayer(marker);
+        mapMarkers.push(marker);
+    });
+    
+    // Fit map to show all markers
+    if (mapMarkers.length > 0) {
+        const group = L.featureGroup(mapMarkers);
+        complaintMap.fitBounds(group.getBounds().pad(0.1));
+    }
+}
+
+// Create Complaint Marker
+function createComplaintMarker(complaint) {
+    const iconHtml = `
+        <div style="
+            background: ${getMarkerColor(complaint.status)};
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: white;
+        ">
+            <i class="${getMarkerIcon(complaint.status)}"></i>
+        </div>
+    `;
+    
+    const customIcon = L.divIcon({
+        html: iconHtml,
+        className: 'custom-marker',
+        iconSize: [30, 30],
+        iconAnchor: [15, 15],
+        popupAnchor: [0, -15]
+    });
+    
+    return L.marker([complaint.lat, complaint.lng], { icon: customIcon });
+}
+
+// Create Complaint Popup
+function createComplaintPopup(complaint) {
+    return `
+        <div class="custom-popup">
+            <div class="popup-header">
+                <span>${complaint.id}</span>
+                <i class="fas fa-times" onclick="this.parentElement.parentElement.parentElement._source.closePopup()" style="cursor: pointer;"></i>
+            </div>
+            <div class="popup-body">
+                <div class="popup-row">
+                    <span class="popup-label">Department:</span>
+                    <span class="popup-value">${complaint.department}</span>
+                </div>
+                <div class="popup-row">
+                    <span class="popup-label">Priority:</span>
+                    <span class="popup-value">${complaint.priority}</span>
+                </div>
+                <div class="popup-row">
+                    <span class="popup-label">Description:</span>
+                    <span class="popup-value">${complaint.description}</span>
+                </div>
+                <div class="popup-row">
+                    <span class="popup-label">Address:</span>
+                    <span class="popup-value">${complaint.address}</span>
+                </div>
+                <div class="popup-row">
+                    <span class="popup-label">Name:</span>
+                    <span class="popup-value">${complaint.name}</span>
+                </div>
+                <div class="popup-row">
+                    <span class="popup-label">Email:</span>
+                    <span class="popup-value">${complaint.email}</span>
+                </div>
+                <div class="popup-row">
+                    <span class="popup-label">Mobile:</span>
+                    <span class="popup-value">${complaint.mobile}</span>
+                </div>
+                <div class="popup-row">
+                    <span class="popup-label">Created:</span>
+                    <span class="popup-value">${new Date(complaint.created_at).toLocaleString()}</span>
+                </div>
+                <div style="text-align: center;">
+                    <span class="popup-status status-${complaint.status}">
+                        ${complaint.status.replace('_', ' ').toUpperCase()}
+                    </span>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// Get Marker Color based on Status
+function getMarkerColor(status) {
+    const colors = {
+        'pending': '#f39c12',
+        'in_progress': '#3498db',
+        'resolved': '#27ae60',
+        'escalated': '#e74c3c'
+    };
+    return colors[status] || '#95a5a6';
+}
+
+// Get Marker Icon based on Status
+function getMarkerIcon(status) {
+    const icons = {
+        'pending': 'fas fa-clock',
+        'in_progress': 'fas fa-spinner',
+        'resolved': 'fas fa-check-circle',
+        'escalated': 'fas fa-exclamation-triangle'
+    };
+    return icons[status] || 'fas fa-map-marker';
+}
+
+// Show Map Error
+function showMapError(message) {
+    const mapContainer = document.getElementById('complaintMap');
+    if (mapContainer) {
+        mapContainer.innerHTML = `
+            <div style="display: flex; justify-content: center; align-items: center; height: 500px; flex-direction: column;">
+                <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: #e74c3c; margin-bottom: 20px;"></i>
+                <p style="color: #e74c3c; font-size: 1.2rem;">${message}</p>
+                <button onclick="loadComplaintData()" style="margin-top: 20px; padding: 10px 20px; background: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                    <i class="fas fa-redo"></i> Retry
+                </button>
+            </div>
+        `;
+    }
+}
